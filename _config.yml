@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: sujin's devlog
 description: front-end engineer, devlog
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/sujinkim-625.github.io/" # the subpath of your site, e.g. /blog
 url: "https://github.com" # the base hostname & protocol for your site, e.g. http://example.com
 repository: Sujinkim-625 # for github-metadata
 
