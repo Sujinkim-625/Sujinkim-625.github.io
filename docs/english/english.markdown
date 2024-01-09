@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  🇺🇸 study english 
+title:  study english 🇺🇸 
 nav_order: 4
 has_children: true
 permalink: /docs/english

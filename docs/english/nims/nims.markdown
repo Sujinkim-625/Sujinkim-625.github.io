@@ -2,13 +2,17 @@
 layout: default
 title: 👩‍💻 National Institute for Mathematical Sciences 
 # nav_order: 2
-parent: 🇺🇸 study english
+parent: study english 🇺🇸
 
-has_children: true
+# has_children: true
 # permalink: /docs/english
 ---
-# Menu2
+# Write "NIMS"
 {: .no_toc }
 
-Menu2 Test
-{: .fs-6 .fw-300 }
+
+~~download latest administrative divisions SHP file~~
+> 🤖 ChatGPT: ~ is mostly correct but could be slightly improved for clarity. The SHP file format is used for storing geospatial data and is commonly associated with GIS (Geographic Information System) applications.   
+A more precise way to phrase this could be: "Download the latest SHP file of administrative divisions." This explicitly indicates that you're seeking the most recent version of the SHP file that contains data on administrative divisions.
+
+**_Download the latest SHP file of administrative divisions._**
