@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 👩‍💻 National Institute for Mathematical Sciences 
+title: NIMS 👩‍💻
 # nav_order: 2
 parent: study english 🇺🇸
 

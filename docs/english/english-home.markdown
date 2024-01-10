@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Home 🏠
 parent: study english 🇺🇸 
 nav_order: 2
 ---

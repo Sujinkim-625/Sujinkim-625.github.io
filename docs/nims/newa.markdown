@@ -16,8 +16,9 @@ parent: NIMS 👩‍💻
 
 ---
 
-## From Shapefile to TopoJSON
-a transformation process from the Shapefile format to the TopoJSON format, both of which are file formats used in geographic information systems (GIS).
+## From Shapefile to TopoJSON   
+
+a transformation process from the Shapefile format to the TopoJSON format, both of which are file formats used in geographic information systems (GIS).   
 {: .fs-3 }
 ---
 ### Shapefile
@@ -379,7 +380,7 @@ function _markdown(tipPercent, amount, tip, md) {
 }
 ```
 
-필요없는 코드는 지우고, 원하는 코드는 모두 출력할 수 있다.
+필요없는 코드는 지우고, 원하는 코드는 모두 출력할 수 있다.   
 ![web_application4.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application4.png?raw=true)
 
 ---
