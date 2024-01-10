@@ -274,8 +274,14 @@ visual studio에서 압축해제한 파일 전체를 열고 live server를 실�
 range 바 아래에, amount = 100
 radio button 아래에, tipPercent = 20
 ```
+![image2.png]()
+
+```
 index.html를 수정하면, 불필요한 출력 결과를 삭제할 수 있다.
-{: .fs-3 }
+{: .fs-3 } 
+
+![image.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application1.png?raw=true)
+
 ```
 # as-is   
 const runtime = new Runtime();
@@ -300,7 +306,8 @@ const main = runtime.module(define, (name) => {
     }
 });
 ```
-![image1](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-01-10%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.06.19.png?raw=true)
+하지만, tip에 대한 부분은 나타나지 않는다.   
+그 이유는, js에서 확인할 수 있다.
 
 ---
 
