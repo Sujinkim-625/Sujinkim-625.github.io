@@ -270,17 +270,17 @@ visual studio에서 압축해제한 파일 전체를 열고 live server를 실�
 예를 들면,
 {: .fs-3 }
 
+![web_application2.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application2.png?raw=true)
+
 ```
 range 바 아래에, amount = 100
 radio button 아래에, tipPercent = 20
 ```
-![image2.png]()
 
-```
 index.html를 수정하면, 불필요한 출력 결과를 삭제할 수 있다.
 {: .fs-3 } 
 
-![image.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application1.png?raw=true)
+![web_application1.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application1.png?raw=true)
 
 ```
 # as-is   
@@ -306,8 +306,81 @@ const main = runtime.module(define, (name) => {
     }
 });
 ```
-하지만, tip에 대한 부분은 나타나지 않는다.   
-그 이유는, js에서 확인할 수 있다.
+하지만, 위 코드는 두 가지 문제점을 가지고 있다.   
+{: .fs-3 } 
+
+첫번째 문제, tip에 대한 부분은 나타나지 않는다.   
+그 이유는, js에서 확인할 수 있다.   
+{: .fs-3 } 
+```javascript
+//아래의 코드는 'tip'
+main.variable(observer("tip")).define("tip", ["amount","tipPercent"], _tip);
+
+//아래의 코드는 'tipPercent'
+//radio button
+main.variable(observer("viewof tipPercent")).define("viewof tipPercent", ["Inputs"], _tipPercent);
+//radio button 아래의 tipPercent = 20
+main.variable(observer("tipPercent")).define("tipPercent", ["Generators", "viewof tipPercent"], (G, _) => G.input(_));
+```
+화면에 출력하고싶다면, viewof를 사용해야한다.   
+{: .fs-3 } 
+```javascript
+main
+    .variable(observer("viewof tip"))
+    .define("tip", ["amount", "tipPercent"], _tip);
+```
+![web_application3.png]()
+
+두번째 문제, observableHQ에서 markdown으로 작성한 부분이 출력되지 않는다.  
+왜? index.html에 관련된 부분을 작성하지 않았기 때문이다.   
+function에 이름이 없었기 때문에 작성할 수 없었다.  
+html, js에 아래의 코드를 수정 또는 추가한다.   
+{: .fs-3 } 
+
+html   
+{: .fs-3 } 
+
+```html
+<!-- html의 section-->
+  <div id="markdown"></div>
+```
+```html
+<!-- html의 define -->
+else if (name === "viewof markdown") {
+    return new Inspector(document.getElementById("markdown"));
+}
+```
+
+js   
+{: .fs-3 } 
+```javascript
+//js의 define 
+//따라서, 아래의 코드에 (as-is)
+ main.variable(observer()).define(["tipPercent", "amount", "tip", "md"], _4);
+ //이름을 지어주고 (to-be)
+main
+    .variable(observer("viewof markdown"))
+    .define(["tipPercent", "amount", "tip", "md"], _markdown);
+
+```
+
+```javascript
+//js의 function 
+//아래의 코드에(as-is)
+function _4(tipPercent, amount, tip, md) {
+  return md`A **${tipPercent}%** tip on **$${amount.toFixed(2)}** is **$${tip.toFixed(2)}**, 
+  for a total of **$${(amount + tip).toFixed(2)}**`;
+}
+
+//이름을 지어준다 (to-be)
+function _markdown(tipPercent, amount, tip, md) {
+  return md`A **${tipPercent}%** tip on **$${amount.toFixed(2)}** is **$${tip.toFixed(2)}**, 
+  for a total of **$${(amount + tip).toFixed(2)}**`;
+}
+```
+
+필요없는 코드는 지우고, 원하는 코드는 모두 출력할 수 있다.
+![web_application4.png]()
 
 ---
 
