@@ -329,7 +329,7 @@ main
     .variable(observer("viewof tip"))
     .define("tip", ["amount", "tipPercent"], _tip);
 ```
-![web_application3.png]()
+![web_application3.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application3.png?raw=true)
 
 두번째 문제, observableHQ에서 markdown으로 작성한 부분이 출력되지 않는다.  
 왜? index.html에 관련된 부분을 작성하지 않았기 때문이다.   
@@ -380,7 +380,7 @@ function _markdown(tipPercent, amount, tip, md) {
 ```
 
 필요없는 코드는 지우고, 원하는 코드는 모두 출력할 수 있다.
-![web_application4.png]()
+![web_application4.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application4.png?raw=true)
 
 ---
 
