@@ -1,0 +1,129 @@
+---
+layout: default
+title: 2. Visualization
+parent: NIMS 👩‍💻 
+nav_order: 2
+---
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+
+## Visualization
+![d3.js Badge](https://img.shields.io/badge/d3.js-F9A03C?style=flat&logo=d3.js&logoColor=white)
+![HTML5 Badge](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white)
+![JavaScript Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white)
+![CSS3 Badge](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=CSS3&logoColor=white)
+
+> 주요 기능   
+> 시도 또는 시군구별 해당 날짜의 감염병 관련 데이터를 지도 위에 표시. 지도 위의 색이 진해질수록 확진자(사망자)의 수가 큰 값을 나타냄. 특정 지역 위에 마우스를 올리면 툴팁으로 해당 지역의 정보를 제공.    
+{: .fs-3 }
+---
+
+### 파일 업로드 기능
+{: .fs-3 }
+
+```
+    1. csv 파일만 업로드 가능.
+    2. 파일 업로드 시, vrc(validateRequiredColumns)를 통해 필수 column이 파일 안에 포함되어있는지 확인. 
+    3. 포함되어있지 않다면, 에러 메시지 출력   
+    inputs.file({
+        label: "파일 업로드",
+        accept: ".csv",
+        required: true
+    })
+```
+---
+
+### scrubber
+{: .fs-3 }
+
+   ```
+scrubber를 활용하여 일정시간(setting_delay)마다 날짜가 변경되고, 지도의 색이 해당 날짜의 데이터 값에 따라 변경됨   
+
+Scrubber(formattedDates, {
+    delay: setting_delay,
+    loop: false,
+    autoplay: false,
+    format: (d) => d.toLocaleDateString() + "  " + weekOfDay[d.getDay()]
+})
+   ```
+---
+
+### draw the map only once
+{: .fs-3 }
+   ```
+issue > 날짜(데이터)가 달라질 때마다 지도가 새로 그려지는 오류 발생.
+fix > 하나의 셀에서 지도 그리기, 지도 색칠하기 모두 작업이 이루어지던 코드를 서로 다른 셀으로 분리하여,   
+    파일을 업로드할 때만 지도를 그리고 이후에는 지도 위의 색만 바뀌도록 코드를 변경.    
+    데이터 업데이트 후 색이 칠해지는데 걸리는 시간이 줄어듦.  
+
+map.selectAll("path")
+    .data(shape.features)
+    .join("path")
+    .attr("d", path)
+    .attr("id", (d) => "map_" + d.id)
+    .attr("stroke", "gray")
+    .attr("fill", "#f5ebeb")
+    .attr("opacity", 0.8)
+    .call(tooltip, tooltipDiv);
+```
+---
+
+### 설정 변경 시, 지도 위의 색 변경 [mutable]({% link docs/nims/mutable.markdown%}#document-d3.js)
+{: .fs-3 }
+```
+issue > 설정 변경(지도를 상하좌우로 이동, map type 변경, zoom, 특정 지역 선택) 시,    
+    지도 위의 색이 변경되지 않는 오류 발생. 마우스를 지도 위에 올려야 색이 변경됨.      
+fix > 변수를 mutable로 선언.   
+    mutable을 사용한 이유: 다른 셀의 값이 변경될 때마다 특정 시점에만 셀을 업데이트, 반응성을 조작하기 위해 사용함. 
+    임의의 변수(mutable a)를 선언하고, 다른 mutable 변수들과 하나의 블록 안에서 작동하도록 코드 작성.    
+    change color 블록에 a를 선언.   
+
+viewof mutableDataForMapUpdate = {
+    mutable a = 0;
+    mutable mutable_mrtb = margin_ratio_top_bottom;
+    mutable mutable_mrlr = margin_ratio_left_right;
+    mutable mutable_mt = mapType;
+    mutable mutable_zs = zoomSelect;
+    mutable mutable_zoom = zoom;
+}
+```
+
+```
+#change color 블록에 a가 실행되도록 코드 추가
+if (a !== "") {
+}
+```
+
+---
+### 툴팁 내용 변경
+{: .fs-3 }
+```
+issue > 툴팁 명이 영어, 옵션(확진자/사망자)에 상관없이 툴팁이 날짜, 지역명, 지역코드, 확진자 수, 사망자 수를 모두 나타냄.
+fix> 툴팁 명을 한글로, 옵션에 따라 툴팁에 표시되는 항목을 다르게 설정
+
+const englishToKorean = {
+    date: "날짜",
+    state: "지역 명",
+    positive: "확진자 수",
+    death: "사망자 수",
+    ratio_positive: "확진자 비율(만 명당)",
+    population: "인구 수"
+};
+
+// 선택 옵션에 따라 표시되는 항목을 지정하는 객체
+const tooltipKeysByOption = {
+    positive: ["date", "state", "positive"],
+    death: ["date", "state", "death"],
+    ratio_positive: ["date", "state", "ratio_positive"]
+};
+```
+---

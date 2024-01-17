@@ -1,6 +1,6 @@
 ---
 layout: default
-title: d3.js
+title: Mutable in d3.js
 parent: NIMS 👩‍💻 
 # nav_order: 1
 ---
