@@ -81,7 +81,9 @@ map.selectAll("path")
 {: .fs-3 }
 ```
 issue > 설정 변경(지도를 상하좌우로 이동, map type 변경, zoom, 특정 지역 선택) 시,    
-    지도 위의 색이 변경되지 않는 오류 발생. 마우스를 지도 위에 올려야 색이 변경됨.      
+    지도 위의 색이 변경되지 않는 오류 발생. 마우스를 지도 위에 올려야 색이 변경됨.
+    ![web_application11.gif]("")      
+      
 fix > 변수를 mutable로 선언.   
     mutable을 사용한 이유: 다른 셀의 값이 변경될 때마다 특정 시점에만 셀을 업데이트, 반응성을 조작하기 위해 사용함. 
     임의의 변수(mutable a)를 선언하고, 다른 mutable 변수들과 하나의 블록 안에서 작동하도록 코드 작성.    
@@ -125,5 +127,124 @@ const tooltipKeysByOption = {
     death: ["date", "state", "death"],
     ratio_positive: ["date", "state", "ratio_positive"]
 };
+
+    ![web_application18.png]("")      
+    ![web_application19.png]("")      
+    ![web_application20.png]("")   
 ```
 ---
+### 삼항연산자   
+{: .fs-3 }   
+```
+issue > 삼항연산자의 사용이 너무 많다.    
+fix > 어느 경우에 삼항 연산자를 사용하는지 공식 문서 확인하기   
+    삼항연산자 사용을 통해 null 값이 나올 수 있는 상황에 대응할 수 있다.    
+    마지막 조건에 null이 출력되는 조건이 포함되어있기 때문에 삼항 연산자 사용이 적절하다고 할 수 있다.   
+    →다형성에 대해 생각해보기 
+
+아래의 코드는 소숫점 3번째자리까지만 나타내기 위한 코드, 코드가 너무 더럽다,,,   
+`<strong>${englishToKorean[key]}</strong>: ${
+    typeof value === "object"
+        ? value.toLocaleString("ko-KR")
+        : key === "ratio_positive" && calculateDecimalLength(value) > 3
+        ? parseFloat(value).toFixed(3)
+        : key === "positive" && calculateDecimalLength(value) > 3
+        ? parseFloat(value).toFixed(3)
+        : key === "death" && calculateDecimalLength(value) > 3
+        ? parseFloat(value).toFixed(3)
+        : value
+}`
+```
+[[리팩토링 조건문지옥 탈출하기]]("https://velog.io/@dolfalf/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EC%A1%B0%EA%B1%B4%EB%AC%B8%EC%A7%80%EC%98%A5-%ED%83%88%EC%B6%9C%ED%95%98%EA%B8%B0-if-else-if-else") 
+
+---
+
+### 함수형 프로그래밍
+{: .fs-3 }   
+```
+issue > 코드의 재사용을 위해, 함수로 만드는 작업 진행이 필요
+[쏙쏙 들어오는 함수형 코딩] (나중에 볼 책!)
+```
+
+---
+
+### 개발자의 의도
+{: .fs-3 }   
+
+```
+issue > “특정지역만 보기”에서 피드백은 특정지역이 가운데에 왔으면 좋겠다. + 주변 지역이 더 보였으면 좋겠다.  
+fix > 특정 지역이 작게 보이는 문제 발생.    
+    다시 질문하니 주변 지역을 함께 봐서 확산의 추이를 보려는 의도의 피드백,    
+    나의 개발 의도는 확산 추이는 전체 지역보기에서 가능하고 특정 지역은 시군구를 볼 때 더 잘 보이도록 하기 위해 구현한 것.    
+    **개발자가 정확한 의도를 가지고 설득 가능하다면** 내 방향으로 개발하는 것이 옳다.
+```
+
+---
+### UI/UX 1
+{: .fs-3 }   
+```
+issue > 전체 지역 보기는 전체적인 흐름을 보기에는 좋지만, 특정 지역을 보기에는 어려움이 존재.   
+    (ex.서울특별시의 지역들이 너무 작게 보인다.)   
+fix > 특정지역만 보기 기능 추가 (특정 지역은 시도 단위로 선택 가능)   
+    ![web_application5]("")   
+    특정지역만 보기에서 선택된 지역을 기존의 색과 다르게 stroke.    
+    ![web_application6]("")   
+    지도의 위치는 어디로?
+        → 피드백: 특정 지역이 가운데에 보이되, 주변 지역도 함께 보이도록   
+        → 개발자의 의도: 특정 지역은 특정 지역이 잘 보이도록   
+        ⇒ user control이 가능하도록 설계 변경   
+```
+---
+
+### UI/UX 2
+{: .fs-3 }   
+```
+fix > user가 control할 수 있는 부분 추가(ex. delay 속도 조절, 지도 위치 조절)
+    → delay slider, top/bottom/left/right slider 추가
+    ![web_application7.png]("")  
+    ![web_application8.png]("")   
+    ⇒ 개발한 서비스가 user control이 많다면, 사용자가 피로감을 느끼지 않을까?
+        → top, bottom, left, right 4개의 slider 대신 2개의 slider로 줄이는 건 어떨까
+        ![web_application9.png]("")   
+        → 전체지역보기에서 slider 제거    
+        ![web_application12.gif]("")   
+
+```
+---
+
+### UI/UX 3
+{: .fs-3 }   
+```
+fix > user가 사용하기 쉬운 서비스인가?
+    → 기능에 대한 설명 추가   
+    ![web_application10.png]("")      
+```   
+
+---
+
+### zoom, pan
+{: .fs-3 }   
+```
+fix > width와 height의 중심점을 기준으로 사각형을 그리고, zoom기능 구현.  
+
+left = margin_ratio_left_right - (width / 2) * (zoom - 0.2)   
+top = margin_ratio_top_bottom - (height / 2) * (zoom - 0.2)   
+right = margin_ratio_left_right + (width / 2) * (zoom - 0.2)   
+bottom = margin_ratio_top_bottom + (height / 2) * (zoom - 0.2)   
+
+    ![web_application13.png]("")      
+    ![web_application14.png]("")      
+    ![web_application15.png]("")      
+
+```
+---
+
+
+### 툴팁 고정
+{: .fs-3 }   
+```
+fix > 마우스 위치에 따라 변경되는 툴팁의 위치를 고정시킴.
+    ![web_application16.gif]("") 
+    선택한 지역의 centroid를 사용, width/2를 기준으로 tooltip 위치 변경  
+    ![web_application17.gif]("")   
+```
