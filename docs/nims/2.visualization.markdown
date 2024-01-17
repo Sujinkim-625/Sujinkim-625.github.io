@@ -128,10 +128,10 @@ const tooltipKeysByOption = {
     ratio_positive: ["date", "state", "ratio_positive"]
 };
 
-    ![web_application18.png]("")      
-    ![web_application19.png]("")      
-    ![web_application20.png]("")   
-```
+``` 
+![web_application18.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application18.png?raw=true) 
+![web_application19.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application19.png?raw=true)     
+![web_application20.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application20.png?raw=true)   
 ---
 ### 삼항연산자   
 {: .fs-3 }   
@@ -185,11 +185,16 @@ fix > 특정 지역이 작게 보이는 문제 발생.
 ```
 issue > 전체 지역 보기는 전체적인 흐름을 보기에는 좋지만, 특정 지역을 보기에는 어려움이 존재.   
     (ex.서울특별시의 지역들이 너무 작게 보인다.)   
-fix > 특정지역만 보기 기능 추가 (특정 지역은 시도 단위로 선택 가능)   
-    ![web_application5]("")   
-    특정지역만 보기에서 선택된 지역을 기존의 색과 다르게 stroke.    
-    ![web_application6]("")   
-    지도의 위치는 어디로?
+fix > 특정지역만 보기 기능 추가 (특정 지역은 시도 단위로 선택 가능)
+``` 
+![web_application5.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application5.png?raw=true) 
+```
+특정지역만 보기에서 선택된 지역을 기존의 색과 다르게 stroke. 
+```   
+![web_application6.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application6.png?raw=true)  
+   
+```
+지도의 위치는 어디로?
         → 피드백: 특정 지역이 가운데에 보이되, 주변 지역도 함께 보이도록   
         → 개발자의 의도: 특정 지역은 특정 지역이 잘 보이도록   
         ⇒ user control이 가능하도록 설계 변경   
@@ -201,15 +206,21 @@ fix > 특정지역만 보기 기능 추가 (특정 지역은 시도 단위로 �
 ```
 fix > user가 control할 수 있는 부분 추가(ex. delay 속도 조절, 지도 위치 조절)
     → delay slider, top/bottom/left/right slider 추가
-    ![web_application7.png]("")  
-    ![web_application8.png]("")   
+```   
+![web_application7.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application7.png?raw=true)  
+![web_application8.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application8.png?raw=true)    
+```  
     ⇒ 개발한 서비스가 user control이 많다면, 사용자가 피로감을 느끼지 않을까?
         → top, bottom, left, right 4개의 slider 대신 2개의 slider로 줄이는 건 어떨까
-        ![web_application9.png]("")   
-        → 전체지역보기에서 slider 제거    
-        ![web_application12.gif]("")   
+```   
+![web_application9.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application9.png?raw=true)  
+   
+```        
+→ 전체지역보기에서 slider 제거    
+```   
+![web_application12.gif](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application12.gif?raw=true)  
+   
 
-```
 ---
 
 ### UI/UX 3
@@ -217,8 +228,9 @@ fix > user가 control할 수 있는 부분 추가(ex. delay 속도 조절, 지�
 ```
 fix > user가 사용하기 쉬운 서비스인가?
     → 기능에 대한 설명 추가   
-    ![web_application10.png]("")      
 ```   
+![web_application10.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application10.png?raw=true)  
+    
 
 ---
 
@@ -231,12 +243,11 @@ left = margin_ratio_left_right - (width / 2) * (zoom - 0.2)
 top = margin_ratio_top_bottom - (height / 2) * (zoom - 0.2)   
 right = margin_ratio_left_right + (width / 2) * (zoom - 0.2)   
 bottom = margin_ratio_top_bottom + (height / 2) * (zoom - 0.2)   
+```   
+![web_application13.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application13.png?raw=true)      
+![web_application14.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application14.png?raw=true)     
+![web_application15.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application15.png?raw=true) 
 
-    ![web_application13.png]("")      
-    ![web_application14.png]("")      
-    ![web_application15.png]("")      
-
-```
 ---
 
 
@@ -244,7 +255,9 @@ bottom = margin_ratio_top_bottom + (height / 2) * (zoom - 0.2)
 {: .fs-3 }   
 ```
 fix > 마우스 위치에 따라 변경되는 툴팁의 위치를 고정시킴.
-    ![web_application16.gif]("") 
-    선택한 지역의 centroid를 사용, width/2를 기준으로 tooltip 위치 변경  
-    ![web_application17.gif]("")   
+```   
+![web_application16.gif](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application16.gif?raw=true)  
 ```
+선택한 지역의 centroid를 사용, width/2를 기준으로 tooltip 위치 변경  
+```   
+![web_application17.gif](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application17.gif?raw=true) 

@@ -15,7 +15,7 @@ nav_order: 3
 </details>
 
 ---
-## download codes from ObservableHQ
+## download codes from ObservableHQ (예시)
 ### download 
 {: .fs-3 }
 
@@ -180,6 +180,29 @@ function _markdown(tipPercent, amount, tip, md) {
 
 ---
 
+## download codes from ObservableHQ
+### 불필요한 코드 출력
+{: .fs-3 }   
+fix > [runtime]("https://github.com/observablehq/runtime")을 참고하여 필요한 부분만 출력되도록 코드를 수정한다.   
+{: .fs-3 }   
 
+![web_application21.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application21.png?raw=true)   
+![web_application22.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application22.png?raw=true)     
 
+---
 
+### 3개의 js 파일 export
+{: .fs-3 }   
+```
+기존의 코드는 하나의 js 파일만 export할 수 있음. 세 개의 js 파일을 export해야됨.
+as-is
+//index.js
+export {default} from "./5a9ffc9992b0449e@7454.js";
+//index.html
+import define from "./index.js";
+
+to-be
+//index.js 삭제
+//index.html
+import define from "./5a9ffc9992b0449e@7454.js";
+```
