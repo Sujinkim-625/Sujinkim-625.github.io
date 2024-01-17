@@ -183,11 +183,16 @@ function _markdown(tipPercent, amount, tip, md) {
 ## download codes from ObservableHQ
 ### 불필요한 코드 출력
 {: .fs-3 }   
-fix > [runtime]("https://github.com/observablehq/runtime")을 참고하여 필요한 부분만 출력되도록 코드를 수정한다.   
-{: .fs-3 }   
-
+```
+issue> 불필요한 부분까지 모두 출력된다.
+```
 ![web_application21.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application21.png?raw=true)   
-![web_application22.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application22.png?raw=true)     
+![web_application22.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application22.png?raw=true)       
+
+fix > [runtime]("https://github.com/observablehq/runtime")을 참고하여 필요한 부분만 출력되도록 코드를 수정한다.   
+{: .fs-3 }    
+![web_application23.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application23.png?raw=true)   
+![web_application24.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application24.png?raw=true)  
 
 ---
 
