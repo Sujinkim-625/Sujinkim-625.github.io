@@ -194,6 +194,23 @@ fix > [runtime]("https://github.com/observablehq/runtime")을 참고하여 필�
 ![web_application23.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application23.png?raw=true)   
 ![web_application24.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application24.png?raw=true)  
 
+
+```
+기본적인 구조는 다음과 같다.
+
+html 상단에
+<div id=”function_name”><div>
+
+<body>의 runtime.module 안에
+if (name === "viewof function_name") {
+  return new Inspector(document.getElementById("function_name"));
+}
+
+if문이 이미 존재한다면, 
+else if (name === "viewof function_name") {
+  return new Inspector(document.getElementById("function_name"));
+}
+```
 ---
 
 ### 3개의 js 파일 export
