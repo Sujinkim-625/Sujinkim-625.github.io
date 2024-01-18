@@ -227,4 +227,31 @@ to-be
 //index.js 삭제
 //index.html
 import define from "./5a9ffc9992b0449e@7454.js";
+import define from "./또 다른 js 파일"
 ```
+
+---
+### 동작을 위해서는 필요하지만, 출력이 필요없는 코드
+{: .fs-3 }   
+
+![web_application25.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application25.png?raw=true)  
+```
+동작하기 위해서는 필요하지만, 출력이 필요없는 코드가 있다. 
+이 경우에는, css에서 함수의 display를 none으로 설정하면 출력되지 않도록 수정할 수 있다.
+
+#mutableDataForMapUpdate {
+  display: none;
+}
+
+#indexOfFormattedDates {
+  display: none;
+}
+#colorChangeandTooltip {
+  display: none;
+}
+
+#default_zoom_value {
+  display: none;
+}
+```
+![web_application26.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application26.png?raw=true) 
