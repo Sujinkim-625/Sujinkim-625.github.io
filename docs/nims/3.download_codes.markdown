@@ -233,7 +233,7 @@ import define from "./또 다른 js 파일"
 ---
 ### 동작을 위해서는 필요하지만, 출력이 필요없는 코드
 {: .fs-3 }   
-
+<br>
 ![web_application25.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application25.png?raw=true)  
 ```
 동작하기 위해서는 필요하지만, 출력이 필요없는 코드가 있다. 
