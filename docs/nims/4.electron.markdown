@@ -1,0 +1,86 @@
+---
+layout: default
+title: 4. Electron
+parent: NIMS 👩‍💻 
+nav_order: 4
+---
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+_[electron 공식홈페이지]("https://www.electronjs.org/")를 참고하여 작성한 페이지입니다._
+## 0. Electron Introduction
+### 1. what is electron? 
+![web_application27.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application27.png?raw=true) 
+
+
+Electron은 JavaScript, HTML, CSS를 사용하여 데스크탑 어플리케이션을 구축하기 위한 프레임워크.    
+별도의 네이티브 개발 경험없이 Chromium(Frontend)과 Node.js(Backend)를 이진파일에 포함시켜(하나의 런타임으로 통합하여 구성)    
+Electron은 하나의 JavaScript 코드베이스를 유지하면서 Windows, macOS, Linux에서 작동하는 크로스 플랫폼 앱을 만들 수 있게 해준다.
+{: .fs-3 }   
+
+### 2.process model
+
+chromium의 다중 아키텍쳐를 물려받아 main process와 render process 두 가지 유형의 프로세스 제공 
+{: .fs-3 }  
+
+![web_application28.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application28.png?raw=true)   
+
+main process   
+Node.js 기반으로 Node.js에서 사용되는 모든 모듈(~~*all of Node.js APIs*~~) 사용 가능, back-end의 영역. 어플리케이션의 진입점 역할(*~~the application's entry point~~*). electron application 당 1개만 존재할 수 있음.
+{: .fs-3 }   
+
+*  window management   
+create and manage application windows with the [BrowserWindow](https://www.electronjs.org/docs/latest/api/browser-window) module
+*~~화면에 창을 띄우고 끄는 기본적인 동작부터 자동 업데이트, 메뉴 커스텀 등의 다양한 기능을 지원한다. 또한 Renderer Process와의 통신을 통해 다양한 화면을 창에 띄우게 된다~~*  
+{: .fs-3 }   
+
+* Application lifecycle (어플리케이션의 생명주기 제어)
+{: .fs-3 }   
+
+render process  
+HTML, CSS, JavaScript로 이루어지는, front-end의 영역. 콘텐츠를 렌더링하는 역할.   
+chromium의 멀티 프로세스 아키텍처가 그대로 이용, 일렉트론 안에서 보이는 각각의 웹페이지는 자신의 process 안에서 동작. electron application 당 개수 제한 없이 여러 개가 존재할 수 있음.   
+{: .fs-3 }   
+
+<details>
+<summary>
+메인 프로세스와 렌더러 프로세스의 차이점   
+</summary>
+<div markdown="1">
+
+[원문보기]("https://tinydew4.gitbooks.io/electron-ko/content/tutorial/quick-start.html")
+
+메인 프로세스는 BrowserWindow Class를 사용하여 새로운 창을 만들 수 있습니다.  BrowserWindow 인스턴스는 따로 분리된 프로세스에서 렌더링 되며 이 프로세스를 렌더러 프로세스라고 합니다. BrowserWindow 인스턴스가 소멸할 때 그 창의 렌더러 프로세스도 같이 소멸합니다.
+{: .fs-3 }   
+    
+메인 프로세스는 모든 웹 페이지와 렌더러 프로세스를 관리하며 렌더러 프로세스는 각각의 프로세스에 고립되며 웹 페이지의 작동에만 영향을 끼칩니다.
+{: .fs-3 }   
+    
+웹 페이지 내에선 기본적으로 네이티브 GUI와 관련된 API를 호출할 수 없도록 설계 되어 있습니다. 왜냐하면 웹 페이지 내에서 네이티브 GUI 리소스를 관리하는 것은 보안에 취약하고 리소스를 누수시킬 수 있기 때문입니다. 꼭 웹 페이지 내에서 API를 사용해야 한다면 메인 프로세스에서 그 작업을 처리할 수 있도록 메인 프로세스와 통신을 해야 합니다.
+{: .fs-3 }   
+    
+Electron에는 메인 프로세스와 렌더러 프로세스 사이에 통신을 할 수 있도록 [ipcRenderer](https://tinydew4.gitbooks.io/electron-ko/content/api/ipc-renderer.html)와 [ipcMain](https://tinydew4.gitbooks.io/electron-ko/content/api/ipc-main.html) 모듈을 제공하고 있습니다. 또는 [remote](https://tinydew4.gitbooks.io/electron-ko/content/api/remote.html) 모듈을 사용하여 RPC 스타일로 통신할 수도 있습니다
+{: .fs-3 }   
+
+</div>
+</details>
+
+### 3.Inter-Process Communication (IPC)
+[tutorial IPC](https://www.electronjs.org/docs/latest/tutorial/ipc)  
+![web_application29.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application29.png?raw=true)   
+Electron의 프로세스 모델에서 메인프로세스와 렌더러 프로세스가 서로 다른 역할을 가지고 있기 때문에 메인 프로세스와 렌더러 프로세스 사이에 통신을 할 수 있도록 ipcRenderer와 ipcMain 모듈을 제공
+[원문보기](https://velog.io/@qortmdalsdl/%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A1%A0Electron-%EC%A0%95%EB%A6%AC)
+{: .fs-3 }   
+
+참고자료   
+[Electron 개요 및 구조](https://velog.io/@yijaee/Electron-%EA%B0%9C%EC%9A%94-%EB%B0%8F-%EA%B5%AC%EC%A1%B0)   
+[일렉트론(Electron) 정리](https://velog.io/@qortmdalsdl/%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A1%A0Electron-%EC%A0%95%EB%A6%AC)
+{: .fs-3 }   
