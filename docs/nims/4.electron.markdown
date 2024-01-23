@@ -644,3 +644,119 @@ out folder 안에 파일이 생성됨.
 {: .fs-3 }   
 
 ![web_application56.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application56.png?raw=true) 
+
+## 5. Publishing and Updating
+### Using update.electronjs.org
+*requirements*
+- Your app runs on macOS or Windows
+- Your app has a public GitHub repository
+- Builds are published to [GitHub releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- Builds are [code signed](https://www.electronjs.org/docs/latest/tutorial/code-signing)
+{: .fs-3 }   
+
+### Publishing a GitHub release
+#### a. Generating a personal access token
+[create a new personal access token(PAT)](https://github.com/settings/tokens/new) *with the public_repo scope, which gives write access to your public repositories (**repo 체크**)*   
+*PAT는 저장해둬야 함.*
+{: .fs-3 }   
+
+<details>
+<summary>
+create a new PAT     
+</summary>
+<div markdown="1">
+
+![web_application57.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application57.png?raw=true)
+</div>
+</details>
+<br>
+#### b. Setting up the GitHub Publisher
+##### Installing the module
+```
+npm install --save-dev @electron-forge/publisher-github
+```
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application58.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application58.png?raw=true)
+</div>
+</details>
+
+##### Configuring the publisher in Forge
+```
+//forge.config.js
+module.exports = {
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'github-user-name',
+          name: 'github-repo-name'
+        },
+        prerelease: false,
+        draft: true
+      }
+    }
+  ]
+}
+```
+<details>
+<summary>
+코드 화면     
+</summary>
+<div markdown="1">
+
+![web_application59.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application59.png?raw=true)
+</div>
+</details>
+
+### Running the publish command
+#### package.json
+```
+//package.json
+//...
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
+  },
+  //...
+```
+
+<details>
+<summary>
+코드화면     
+</summary>
+<div markdown="1">
+
+![web_application60.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application60.png?raw=true)
+</div>
+</details>
+
+#### publish
+```
+npm run publish
+```
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application61.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application61.png?raw=true)
+</div>
+</details>
+
+#### github release(draft) 
+![web_application62.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application62.png?raw=true)
+
+#### publish release
+![web_application63.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application63.png?raw=true)
+
+#### release done!
+![web_application64.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application64.png?raw=true)
