@@ -26,7 +26,6 @@ Electron은 JavaScript, HTML, CSS를 사용하여 데스크탑 어플리케이�
 Electron은 하나의 JavaScript 코드베이스를 유지하면서 Windows, macOS, Linux에서 작동하는 크로스 플랫폼 앱을 만들 수 있게 해준다.
 {: .fs-3 }   
 
----
 
 ### 2.process model
 
@@ -75,7 +74,6 @@ Electron에는 메인 프로세스와 렌더러 프로세스 사이에 통신을
 </div>
 </details>
 
----
 
 ### 3.Inter-Process Communication (IPC)
 [tutorial IPC](https://www.electronjs.org/docs/latest/tutorial/ipc)  
@@ -90,9 +88,7 @@ Electron의 프로세스 모델에서 메인프로세스와 렌더러 프로세�
 {: .fs-3 }   
 
 ---
-
 ## 1. Prerequisites
-### 0. Prerequisites
 Electron app을 개발하기 위해서는 (LTS 이상의)Node.js와 npm package manager가 설치되어야한다.  
 {: .fs-3 }   
 
@@ -105,11 +101,43 @@ macOS를 기준으로, homebrew를 설치하고 homebrew를 이용하여 nvm�
 node -v
 npm -w
 ```
-✔︎ 실행화면   
-{: .fs-3 }   
-
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
 ![web_application31.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application31.png?raw=true)  
+</div>
+</details>
 
 [참고자료]   
 [Elctron 시작하기](https://oraange.tistory.com/30)
 {: .fs-3 }   
+
+---
+## 2. Building your First App - Setting up your project
+### Initializing your npm project
+
+```
+Start by creating a folder and initializing an npm package within it with npm init.
+
+mkdir my-electron-app
+cd my-electron-app
+npm init
+```
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application32.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application32.png?raw=true)    
+This command will prompt you to configure some fields in your package.json. 
+
+![web_application33.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application33.png?raw=true)  
+package.json이 생성된 것을 볼 수 있다. (”main”: index.js → main.js로 바꿔준다.)
+
+![web_application34.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application34.png?raw=true) | ![web_application35.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application35.png?raw=true) 
+
+</div>
+</details>
