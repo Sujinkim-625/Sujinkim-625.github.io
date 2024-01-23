@@ -1,0 +1,195 @@
+---
+layout: default
+title: 3. Using Preload Scripts
+parent: Electron
+nav_order: 4
+---
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+## 3. Using Preload Scripts
+### What is a preload script?
+
+*Electron의 메인 프로세스는 전체 운영 체제에 액세스할 수 있는 Node.js 환경이다. Electron 모듈뿐만 아니라 npm을 통해 설치한 패키지나 Node.js의 기본 내장 모듈에도 액세스할 수 있다. 반면에, 보안상의 이유로 렌더러 프로세스는 기본적으로 Node.js를 실행하지 않고 웹 페이지를 실행한다.*
+{: .fs-3 }   
+
+*Electron의 다른 프로세스 유형을 함께 연결하려면 preload라고 불리는 특수한 스크립트를 사용해야 한다.*
+{: .fs-3 }   
+---
+### Augmenting the renderer with a preload script
+`preload.js`   
+*preload script는 렌더러에서 웹 페이지가 로드되기 전에 주입되며, 이는 크롬 익스텐션의 컨텐트 스크립트와 유사하다. 특권 있는 액세스가 필요한 렌더러에 기능을 추가하려면 contextBridge API를 사용하여 전역 객체를 정의할 수 있다.*
+{: .fs-3 }   
+
+<details>
+<summary>
+코드보기     
+</summary>
+<div markdown="1">
+
+```
+//preload.js
+const { contextBridge } = require('electron')
+
+contextBridge.exposeInMainWorld('versions', {
+  node: () => process.versions.node,
+  chrome: () => process.versions.chrome,
+  electron: () => process.versions.electron
+  // we can also expose variables, not just functions
+})
+```
+</div>
+</details>
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application44.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application44.png?raw=true) 
+
+</div>
+</details>
+
+`main.js`
+
+*이 스크립트를 렌더러 프로세스에 연결하려면 BrowserWindow 생성자의 webPreferences.preload 옵션에 해당 스크립트의 경로를 전달하면 된다.*
+{: .fs-3 }   
+
+<details>
+<summary>
+코드보기     
+</summary>
+<div markdown="1">
+
+```
+//main.js
+const { app, BrowserWindow } = require('electron')
+const path = require('node:path')
+
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
+
+  win.loadFile('index.html')
+}
+
+app.whenReady().then(() => {
+  createWindow()
+})
+```
+</div>
+</details>
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application45.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application45.png?raw=true) 
+![web_application46.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application46.png?raw=true) 
+</div>
+</details>
+
+
+`renderer.js`
+
+*현재 시점에서 렌더러는 versions 전역 변수에 액세스할 수 있다. 이 정보를 창에 표시해 보겠다. 이 변수는 **window.versions** 또는 간단히 **versions**를 통해 액세스할 수 있습니다. **info**라는 id 속성을 가진 HTML 요소의 텍스트를 변경하는 데는 document.getElementById DOM API를 사용하겠다.*
+{: .fs-3 }   
+
+<details>
+<summary>
+코드보기     
+</summary>
+<div markdown="1">
+
+```
+//renderer.js
+const information = document.getElementById('info')
+information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+```
+</div>
+</details>
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application47.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application47.png?raw=true) 
+</div>
+</details>
+
+`index.html`
+
+*index.html을 수정하여 id 속성이 'info'인 새로운 요소를 추가하고, renderer.js 스크립트를 연결*
+{: .fs-3 }   
+
+<details>
+<summary>
+코드보기     
+</summary>
+<div markdown="1">
+```
+
+#index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hello from Electron renderer!</title>
+  </head>
+  <body>
+    <h1>Hello from Electron renderer!</h1>
+    <p>👋</p>
+    <p id="info"></p>
+  </body>
+  <script src="./renderer.js"></script>
+</html>
+```
+</div>
+</details>
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application48.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application48.png?raw=true) 
+</div>
+</details>
+
+---
+실행결과
+{: .fs-3 }   
+
+![web_application49.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application49.png?raw=true) 
+
+---
+프로젝트 트리
+{: .fs-3 }   
+![web_application50.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application50.png?raw=true) 

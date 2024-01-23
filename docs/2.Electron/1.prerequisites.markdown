@@ -1,0 +1,42 @@
+---
+layout: default
+title: 1. Prerequisites
+parent: Electron
+nav_order: 2
+---
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+## 1. Prerequisites
+Electron app을 개발하기 위해서는 (LTS 이상의)Node.js와 npm package manager가 설치되어야한다.  
+{: .fs-3 }   
+
+macOS를 기준으로, homebrew를 설치하고 homebrew를 이용하여 nvm을 설치, 그리고 nvm을 이용하여 node를 설치하면 된다. 자세한 설치 방법은 [참고블로그](https://memostack.tistory.com/274)에 설명이 잘 되어있다. npm은 node를 설치하면 설치가 될 것이다.   
+{: .fs-3 }   
+
+설치 및 버전 확인하기
+{: .fs-3 }   
+```
+node -v
+npm -w
+```
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+![web_application31.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application31.png?raw=true)  
+</div>
+</details>
+
+[참고자료]   
+[Elctron 시작하기](https://oraange.tistory.com/30)
+{: .fs-3 }   

@@ -77,7 +77,7 @@ map.selectAll("path")
 ```
 ---
 
-### 설정 변경 시, 지도 위의 색 변경 [mutable]({% link docs/nims/mutable.markdown%}#document-d3.js)
+### 설정 변경 시, 지도 위의 색 변경 [mutable]({% link docs/1.nims/mutable.markdown%}#document-d3.js)
 {: .fs-3 }
 ```
 issue > 설정 변경(지도를 상하좌우로 이동, map type 변경, zoom, 특정 지역 선택) 시,    

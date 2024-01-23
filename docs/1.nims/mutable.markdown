@@ -2,7 +2,7 @@
 layout: default
 title: Mutable in d3.js
 parent: NIMS 👩‍💻 
-# nav_order: 1
+nav_order: 4
 ---
 
 <details open markdown="block">

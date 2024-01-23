@@ -1,0 +1,92 @@
+---
+layout: default
+title: 4. Packaging Your Application
+parent: Electron
+nav_order: 5
+---
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+## 4. Packaging Your Application - Using Electron Forge
+Electron은 핵심 모듈에 패키징 및 배포 도구가 내장되어 있지 않다. 따라서 개발 모드에서 작동하는 Electron 앱을 배포할 수 있는 패키지로 만들려면 추가 도구를 사용해야한다. 이러한 패키지를 배포 가능한 앱이라고도 한다. 배포 가능한 앱은 설치 프로그램(예: Windows의 MSI) 또는 휴대용 실행 파일(예: macOS의 .app)일 수 있다.
+{: .fs-3 }   
+
+Electron Forge는 Electron 앱의 패키징 및 배포를 처리하는 올인원 도구이다. 이 도구는 핵심적으로 많은 기존 Electron 도구들 (예: electron-packager, @electron/osx-sign, electron-winstaller 등)을 단일 인터페이스로 통합하여 이들을 모두 함께 사용할 필요가 없도록 만들어 준다.
+{: .fs-3 }   
+
+### Importing your project into Forge
+```
+npm install --save-dev @electron-forge/cli
+npx electron-forge import
+```
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application51.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application51.png?raw=true) 
+
+![web_application52.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application52.png?raw=true) 
+
+package.json에 forge 관련 코드가 추가된다.
+{: .fs-3 }   
+
+![web_application53.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application53.png?raw=true) 
+
+
+</div>
+</details>
+---
+
+### Creating a distributable
+```
+npm run make
+```
+<details>
+<summary>
+make command 설명
+</summary>
+<div markdown="1">
+
+1. electron-forge package 실행:   
+- 먼저, 내부에서 electron-forge package 명령을 실행.   
+- 이 명령은 Electron 이진 파일과 함께 앱 코드를 번들링. 번들링된 코드는 특정 폴더에 생성됨.
+- 즉, Electron 앱 코드와 Electron 바이너리가 함께 패키징되어 실행 가능한 형태로 만들어진다
+2. Distributable 생성:
+- 그런 다음, 이 패키지된 앱 폴더를 사용하여 각 설정된 메이커(Maker)에 대해 별도의 배포용 파일을 생성.
+- 각 메이커는 특정한 배포 형식 또는 플랫폼을 나타냅니다. 예를 들어, @electron-forge/maker-deb은 Debian 운영 체제용 패키지를 생성하고, @electron-forge/maker-squirrel은 Windows용 설치 프로그램을 생성.
+- 이렇게 생성된 배포용 파일은 사용자에게 제공되어 설치하거나 실행할 수 있는 형태로 제공.
+{: .fs-3 }   
+
+</div>
+</details>
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application54.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application54.png?raw=true) 
+
+out folder 안에 파일이 생성됨.
+{: .fs-3 }   
+
+![web_application55.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application55.png?raw=true) 
+</div>
+</details>
+---
+
+코드트리
+{: .fs-3 }   
+
+![web_application56.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application56.png?raw=true) 

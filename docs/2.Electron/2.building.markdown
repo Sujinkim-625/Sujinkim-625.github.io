@@ -1,0 +1,297 @@
+---
+layout: default
+title: 2. Building your First App
+parent: Electron
+nav_order: 3
+---
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+---
+## 2. Building your First App - Setting up your project
+### Initializing your npm project
+
+#### initalizing an npm package 
+Start by creating a folder and initializing an npm package within it with npm init.  
+{: .fs-3 }   
+
+
+```
+mkdir my-electron-app
+cd my-electron-app
+npm init
+```
+<details>
+<summary>
+  실행화면     
+</summary>
+<div markdown="1">
+
+![web_application32.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application32.png?raw=true)    
+This command will prompt you to configure some fields in your package.json.   
+{: .fs-3 }   
+
+
+![web_application33.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application33.png?raw=true)  
+package.json이 생성된 것을 볼 수 있다. (”main”: index.js → main.js로 바꿔준다.)   
+{: .fs-3 }   
+
+AS-IS   
+{: .fs-3 }   
+
+![web_application34.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application34.png?raw=true) 
+
+TO-BE   
+{: .fs-3 }   
+
+![web_application35.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application35.png?raw=true) 
+
+</div>
+</details>
+
+#### install electron —save-dev       
+{: .fs-3 }   
+
+You should also now have a node_modules folder containing the Electron executable, as well as a `package-lock.json` lockfile that specifies the exact dependency versions to install.   
+{: .fs-3 }   
+
+```
+npm install electron —save-dev
+```
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application36.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application36.png?raw=true) 
+
+node_modules, `package-lock.json`, `package.json` 코드에 devDependencies가 추가되었다!   
+{: .fs-3 }   
+
+![web_application37.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application37.png?raw=true) 
+</div>
+</details>
+
+---
+
+### Running an Electron app
+
+`package.json` 파일의 메인 스크립트는 앱이 시작될 때 실행되는 중심적인 코드를 담고 있으며, 이 코드는 주로 메인 프로세스에서 앱의 핵심적인 기능을 담당한다. 이 프로세스는 Node.js를 기반으로 동작하며, 앱의 전반적인 동작을 조정하고 관리하는 역할을 수행한다.   
+{: .fs-3 }   
+
+<details>
+<summary>
+메인 프로세스 진입점이 올바르게 구성되었는지 확인하기(생략가능)
+</summary>
+<div markdown="1">
+Electron의 메인 프로세스는 일반적인 Node.js 환경과 유사하게 동작한다. 따라서 electron 명령을 사용하여 메인 프로세스 스크립트를 실행하면, Node.js에서 사용되는 모듈이나 기능들을 Electron 메인 프로세스에서도 활용할 수 있다.   
+{: .fs-3 }   
+
+```
+//main.js
+// Create a main.js file in the root folder of your project
+console.log('Hello from Electron')
+```
+
+```
+//package.json
+//script 안에 start 코드를 추가.
+"scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+개발 모드에서 Electron을 실행하려면 터미널에서 다음과 같은 명령어를 사용   
+{: .fs-3 }   
+
+```
+npm run start
+```
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application38.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application38.png?raw=true) 
+![web_application39.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application39.png?raw=true) 
+![web_application40.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application40.png?raw=true) 
+</div>
+</details>
+
+</div>
+</details>
+
+---
+### Loading a web page into a BrowserWindow
+
+Electron에서 각 창은 로컬 HTML 파일 또는 원격 웹 주소에서 로드될 수 있는 웹 페이지를 표시한다. 프로젝트의 루트 폴더에 `index.html` 파일을 만들어 기본 웹 페이지를 생성하자! 그럼, Electron BrowserWindow에 로드할 수 있다.   
+{: .fs-3 }   
+
+<details>
+<summary>
+코드 보기     
+</summary>
+<div markdown="1">
+
+```
+//index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hello from Electron renderer!</title>
+  </head>
+  <body>
+    <h1>Hello from Electron renderer!</h1>
+    <p>👋</p>
+  </body>
+</html>
+```
+</div>
+</details>
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application41.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application41.png?raw=true) 
+</div>
+</details>
+
+main.js 수정하기   
+
+<details>
+<summary>
+코드 보기     
+</summary>
+<div markdown="1">
+
+```
+//main.js
+const { app, BrowserWindow } = require('electron')
+
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600
+  })
+
+  win.loadFile('index.html')
+}
+
+app.whenReady().then(() => {
+  createWindow()
+})
+```
+
+</div>
+</details>
+
+<details>
+<summary>
+코드 설명     
+</summary>
+<div markdown="1">
+Importing two Electron modules with CommonJS module syntax
+{: .fs-3 }   
+
+- *app: 전반적인 애플리케이션 이벤트 라이프사이클을 제어*
+- *BrowserWindow: 애플리케이션 창의 생성과 관리를 담당*
+{: .fs-3 }   
+
+```
+const { app, BrowserWindow } = require('electron')
+```
+
+Writing a reusable function to instantiate windows (재사용 가능한 함수를 작성하여 창을 생성)
+{: .fs-3 }   
+
+- *createWindow() 함수는 새로운 BrowserWindow 인스턴스를 생성하고, 해당 창의 구성을 설정하며(width, height, webPreferences 등), index.html 파일을 창에 로드*
+{: .fs-3 }   
+
+```
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600
+  })
+
+  win.loadFile('index.html')
+}
+```
+
+Calling your function when the app is ready
+{: .fs-3 }   
+
+- *Electron에서 BrowserWindow은 app 모듈의 ready 이벤트가 발생한 후에만 생성할 수 있다. app.whenReady() API를 사용하고 해당 프로미스가 이행되면 createWindow()을 호출함으로써 이 이벤트를 기다릴 수 있다.*
+- *애플리케이션이 초기화되고 필요한 설정이 완료된 후에 창을 생성하도록 보장*
+{: .fs-3 }   
+
+```
+app.whenReady().then(() => {
+  createWindow()
+})
+```
+
+이제, Electron 애플리케이션의 시작 명령을 실행하면 성공적으로 웹 페이지가 표시되는 창이 열릴 것이다!
+{: .fs-3 }   
+
+</div>
+</details>
+
+<details>
+<summary>
+실행화면     
+</summary>
+<div markdown="1">
+
+![web_application42.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application42.png?raw=true)
+
+![web_application43.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application43.png?raw=true) 
+</div>
+</details>
+
+---
+### Managing your app's window lifecycle
+
+*[Windows 및 Linux] 일반적으로 모든 창을 닫으면 애플리케이션이 완전히 종료된다. Electron 앱에서 이 패턴을 구현하려면 app 모듈의 **`window-all-closed`** 이벤트를 감지하고, 사용자가 macOS에서 작업 중이 아닌 경우 app.quit()을 호출하여 앱을 종료하도록 한다.*   
+{: .fs-3 }   
+
+```
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
+})
+```
+*[macOS] macOS에서는 창을 닫아도 앱이 완전히 종료되지 않고, macOS 앱은 일반적으로 창이 열려 있지 않아도 계속 실행된다. 창이 없을 때 앱을 활성화하면 새 창이 열리도록 해야한다. 창이 준비되기 전에는 창을 만들 수 없으므로, 앱이 초기화된 후에만 activate 이벤트를 감지하도록 해야한다. 기존의 whenReady() 콜백 내에서만 activate 이벤트를 수신하도록 한다.*
+{: .fs-3 }   
+
+```
+app.whenReady().then(() => {
+  createWindow()
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+})
+```
