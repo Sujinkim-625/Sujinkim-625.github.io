@@ -55,7 +55,7 @@ contextBridge.exposeInMainWorld('versions', {
 </summary>
 <div markdown="1">
 
-![web_application44.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application44.png?raw=true) 
+![web_application44.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application44.png?raw=true) 
 
 </div>
 </details>
@@ -100,8 +100,8 @@ app.whenReady().then(() => {
 </summary>
 <div markdown="1">
 
-![web_application45.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application45.png?raw=true) 
-![web_application46.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application46.png?raw=true) 
+![web_application45.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application45.png?raw=true) 
+![web_application46.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application46.png?raw=true) 
 </div>
 </details>
 
@@ -131,7 +131,7 @@ information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.
 </summary>
 <div markdown="1">
 
-![web_application47.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application47.png?raw=true) 
+![web_application47.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application47.png?raw=true) 
 </div>
 </details>
 
@@ -179,7 +179,7 @@ information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.
 </summary>
 <div markdown="1">
 
-![web_application48.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application48.png?raw=true) 
+![web_application48.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application48.png?raw=true) 
 </div>
 </details>
 
@@ -187,9 +187,9 @@ information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.
 실행결과
 {: .fs-3 }   
 
-![web_application49.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application49.png?raw=true) 
+![web_application49.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application49.png?raw=true) 
 
 ---
 프로젝트 트리
 {: .fs-3 }   
-![web_application50.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application50.png?raw=true) 
+![web_application50.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application50.png?raw=true) 

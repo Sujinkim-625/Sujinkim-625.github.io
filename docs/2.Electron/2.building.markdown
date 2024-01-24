@@ -34,24 +34,24 @@ npm init
 </summary>
 <div markdown="1">
 
-![web_application32.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application32.png?raw=true)    
+![web_application32.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application32.png?raw=true)    
 This command will prompt you to configure some fields in your package.json.   
 {: .fs-3 }   
 
 
-![web_application33.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application33.png?raw=true)  
+![web_application33.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application33.png?raw=true)  
 package.json이 생성된 것을 볼 수 있다. (”main”: index.js → main.js로 바꿔준다.)   
 {: .fs-3 }   
 
 AS-IS   
 {: .fs-3 }   
 
-![web_application34.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application34.png?raw=true) 
+![web_application34.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application34.png?raw=true) 
 
 TO-BE   
 {: .fs-3 }   
 
-![web_application35.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application35.png?raw=true) 
+![web_application35.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application35.png?raw=true) 
 
 </div>
 </details>
@@ -72,12 +72,12 @@ npm install electron —save-dev
 </summary>
 <div markdown="1">
 
-![web_application36.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application36.png?raw=true) 
+![web_application36.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application36.png?raw=true) 
 
 node_modules, `package-lock.json`, `package.json` 코드에 devDependencies가 추가되었다!   
 {: .fs-3 }   
 
-![web_application37.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application37.png?raw=true) 
+![web_application37.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application37.png?raw=true) 
 </div>
 </details>
 
@@ -122,9 +122,9 @@ npm run start
 </summary>
 <div markdown="1">
 
-![web_application38.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application38.png?raw=true) 
-![web_application39.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application39.png?raw=true) 
-![web_application40.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application40.png?raw=true) 
+![web_application38.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application38.png?raw=true) 
+![web_application39.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application39.png?raw=true) 
+![web_application40.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application40.png?raw=true) 
 </div>
 </details>
 
@@ -175,7 +175,7 @@ Electron에서 각 창은 로컬 HTML 파일 또는 원격 웹 주소에서 로�
 </summary>
 <div markdown="1">
 
-![web_application41.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application41.png?raw=true) 
+![web_application41.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application41.png?raw=true) 
 </div>
 </details>
 
@@ -266,9 +266,9 @@ app.whenReady().then(() => {
 </summary>
 <div markdown="1">
 
-![web_application42.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application42.png?raw=true)
+![web_application42.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application42.png?raw=true)
 
-![web_application43.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application43.png?raw=true) 
+![web_application43.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application43.png?raw=true) 
 </div>
 </details>
 

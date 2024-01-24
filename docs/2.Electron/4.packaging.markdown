@@ -33,14 +33,14 @@ npx electron-forge import
 </summary>
 <div markdown="1">
 
-![web_application51.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application51.png?raw=true) 
+![web_application51.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application51.png?raw=true) 
 
-![web_application52.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application52.png?raw=true) 
+![web_application52.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application52.png?raw=true) 
 
 package.json에 forge 관련 코드가 추가된다.
 {: .fs-3 }   
 
-![web_application53.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application53.png?raw=true) 
+![web_application53.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application53.png?raw=true) 
 
 
 </div>
@@ -76,12 +76,12 @@ make command 설명
 </summary>
 <div markdown="1">
 
-![web_application54.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application54.png?raw=true) 
+![web_application54.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application54.png?raw=true) 
 
 out folder 안에 파일이 생성됨.
 {: .fs-3 }   
 
-![web_application55.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application55.png?raw=true) 
+![web_application55.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application55.png?raw=true) 
 </div>
 </details>
 ---
@@ -89,4 +89,4 @@ out folder 안에 파일이 생성됨.
 코드트리
 {: .fs-3 }   
 
-![web_application56.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application56.png?raw=true) 
+![web_application56.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application56.png?raw=true) 

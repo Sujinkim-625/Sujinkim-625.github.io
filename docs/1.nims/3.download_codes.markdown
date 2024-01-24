@@ -66,7 +66,7 @@ visual studio에서 압축해제한 파일 전체를 열고 live server를 실�
 예를 들면,
 {: .fs-3 }
 
-![web_application2.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application2.png?raw=true)
+![web_application2.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application2.png?raw=true)
 
 ```
 range 바 아래에, amount = 100
@@ -76,7 +76,7 @@ radio button 아래에, tipPercent = 20
 index.html를 수정하면, 불필요한 출력 결과를 삭제할 수 있다.
 {: .fs-3 } 
 
-![web_application1.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application1.png?raw=true)
+![web_application1.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application1.png?raw=true)
 
 ```
 # as-is   
@@ -125,7 +125,7 @@ main
     .variable(observer("viewof tip"))
     .define("tip", ["amount", "tipPercent"], _tip);
 ```
-![web_application3.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application3.png?raw=true)
+![web_application3.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application3.png?raw=true)
 
 두번째 문제, observableHQ에서 markdown으로 작성한 부분이 출력되지 않는다.  
 왜? index.html에 관련된 부분을 작성하지 않았기 때문이다.   
@@ -176,7 +176,7 @@ function _markdown(tipPercent, amount, tip, md) {
 ```
 
 필요없는 코드는 지우고, 원하는 코드는 모두 출력할 수 있다.   
-![web_application4.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application4.png?raw=true)
+![web_application4.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application4.png?raw=true)
 
 ---
 
@@ -186,13 +186,13 @@ function _markdown(tipPercent, amount, tip, md) {
 ```
 issue> 불필요한 부분까지 모두 출력된다.
 ```
-![web_application21.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application21.png?raw=true)   
-![web_application22.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application22.png?raw=true)       
+![web_application21.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application21.png?raw=true)   
+![web_application22.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application22.png?raw=true)       
 
 fix > [runtime]("https://github.com/observablehq/runtime")을 참고하여 필요한 부분만 출력되도록 코드를 수정한다.   
 {: .fs-3 }    
-![web_application23.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application23.png?raw=true)   
-![web_application24.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application24.png?raw=true)  
+![web_application23.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application23.png?raw=true)   
+![web_application24.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application24.png?raw=true)  
 
 
 ```
@@ -234,7 +234,7 @@ import define from "./또 다른 js 파일"
 ### 동작을 위해서는 필요하지만, 출력이 필요없는 코드
 {: .fs-3 }   
 <br>
-![web_application25.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application25.png?raw=true)  
+![web_application25.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application25.png?raw=true)  
 ```
 동작하기 위해서는 필요하지만, 출력이 필요없는 코드가 있다. 
 이 경우에는, css에서 함수의 display를 none으로 설정하면 출력되지 않도록 수정할 수 있다.
@@ -254,4 +254,4 @@ import define from "./또 다른 js 파일"
   display: none;
 }
 ```
-![web_application26.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application26.png?raw=true) 
+![web_application26.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application26.png?raw=true) 

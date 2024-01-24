@@ -33,7 +33,7 @@ npm -w
 실행화면     
 </summary>
 <div markdown="1">
-![web_application31.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/nims/image/web_application31.png?raw=true)  
+![web_application31.png](https://github.com/Sujinkim-625/Sujinkim-625.github.io/blob/main/docs/1.nims/image/web_application31.png?raw=true)  
 </div>
 </details>
 
